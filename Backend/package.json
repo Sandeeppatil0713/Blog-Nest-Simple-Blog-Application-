@@ -2,7 +2,7 @@
   "name": "post_backend",
   "version": "1.0.0",
   "main": "index.js",
-"scripts": {
+  "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "@imagekit/nodejs": "^7.5.0",
+    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.4.1",

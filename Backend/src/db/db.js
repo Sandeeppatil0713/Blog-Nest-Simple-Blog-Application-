@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
 
-async function connectDB(){
-    
-    await mongoose.connect("mongodb+srv://SandeepPatil:mFKa9pCSeE8x0GnT@posts.ykeacge.mongodb.net/posts");
-
-    console.log("Database Connected Successfully ");
-    
+async function connectDB() {
+  await mongoose.connect(process.env.MONGO_URI);
+  console.log("Database Connected Successfully");
 }
 
-module.exports=connectDB;
+module.exports = connectDB;

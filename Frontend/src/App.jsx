@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import './App.css'
 
+const API = import.meta.env.VITE_API_URL || ''
+
 /* ── Background orbs (shared) ── */
 function Background() {
   return (
@@ -91,7 +93,7 @@ function CreatePage() {
       const formData = new FormData()
       formData.append('image', image)
       formData.append('caption', caption)
-      const res = await fetch('/create-post', { method: 'POST', body: formData })
+      const res = await fetch(`${API}/create-post`, { method: 'POST', body: formData })
       if (!res.ok) throw new Error()
       setCaption('')
       setImage(null)
@@ -164,7 +166,7 @@ function PostsPage() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch('/posts')
+        const res = await fetch(`${API}/posts`)
         const data = await res.json()
         setPosts(data.posts)
       } catch {
